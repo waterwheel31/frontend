@@ -1,0 +1,82 @@
+
+
+            
+h1 {
+    color: #2d3c49;
+    font-family: "serif";
+    margin: 10px ;
+}
+
+h2 {
+    color: #7d97ad;
+    font-family: "serif";
+    margin: 10px ;
+}
+
+header {
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    color: #697681;
+
+    background: white;
+    height: 85px;
+    padding: 15px;
+}
+
+
+
+img{
+    background-color: white;
+    object-fit: cover;
+    
+}
+
+hr.style1{
+    border-top: 5px solid #7d97ad;
+    
+}
+
+
+.first-row{
+    display:flex;
+    justify-content: flex-first;
+    
+}
+
+.title{
+    margin-left:auto!important; 
+    text-align: right;
+    font-family: "serif";
+    color: #2d3c49;
+    margin: 10px ;
+  
+}
+.logoU{
+    
+    margin: 10px ;
+}
+
+.middle{
+    margin: 10px ;
+}
+
+.container {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    
+
+}
+
+.box {
+    display: inline-block;
+　　　　　　     vertical-align: middle;
+   
+    text-align: center;
+    
+    color: #2d3c49;
+    width:30%;
+    
+    margin: 10px ;
+   
+}
