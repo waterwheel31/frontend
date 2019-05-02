@@ -107,7 +107,7 @@ var Engine = (function(global) {
 
         });
 
-        if (player.y < -20){
+        if (player.y < -50){
             alert('Game Clear!');
         }
 
