@@ -27,18 +27,13 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
-
          //console.log(allFeeds);
 
         it('URL is deinfed',function(){
             for (let feed in allFeeds){
                 //console.log(feed);
                 expect(allFeeds[feed].url).toBeDefined();
-                expect(allFeeds[feed].url).not.toEqual(null);
+                expect(allFeeds[feed].url.length).toBeGreaterThan(0);
             }
                 
          });
@@ -52,7 +47,7 @@ $(function() {
             for (let feed in allFeeds){
                 //console.log(feed);
                 expect(allFeeds[feed].name).toBeDefined();
-                expect(allFeeds[feed].name).not.toEqual(null);
+                expect(allFeeds[feed].name.length).toBeGreaterThan(0);
             }
                 
          });
@@ -70,8 +65,7 @@ $(function() {
 
         it('menu is hidden',function(){
             
-            let hiddenMenu = document.querySelector('.menu-hidden');
-            expect(hiddenMenu).not.toEqual(null);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
                 
          });
 
@@ -87,14 +81,10 @@ $(function() {
             let menu = document.querySelector('.menu-icon-link');
             //console.log(menu);
             menu.click();
-            let hiddenmenu = document.querySelector('.menu-hidden');
-            //console.log(hiddenmenu);
-            expect (hiddenmenu).toEqual(null);
+            expect($('body').hasClass('menu-hidden')).toBe(false);
 
             menu.click();
-            hiddenmenu = document.querySelector('.menu-hidden');
-            //console.log(hiddenmenu);
-            expect (hiddenmenu).not.toEqual(null);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
 
                 
         });
@@ -117,9 +107,13 @@ $(function() {
         });
 
         it ('at least a single entry element', function(done){
-            let entry = document.querySelector('.entry-link');
+            //let entry = document.querySelector('.entry-link');
             //console.log(entry);
-            expect(entry).not.toEqual(null);
+            
+            //expect(entry).not.toEqual(null);
+
+            expect($('.feed .entry').length).toBeGreaterThan(0);
+
             done();
         });
 
@@ -136,6 +130,7 @@ $(function() {
 
         beforeEach(function(done){
 
+            /*
             loadFeed(1, function(){
                 feed0 = document.querySelector('.feed');
                 done();
@@ -145,13 +140,19 @@ $(function() {
                 feed1 = document.querySelector('.feed');
                 done();
             });
-   
+            */
+
+            loadFeed(0,function(){
+                feed0 = document.querySelector('.feed').innerHTML;
+                loadFeed(1,done);
+            });
+
         });
 
 
         it ('feeds are different', function(done){
             
-            feed1 = document.querySelector('.feed');
+            feed1 = document.querySelector('.feed').innerHTML;
 
             console.log('feed0');
             console.log(feed0);
