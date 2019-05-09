@@ -111,3 +111,29 @@ h1 {
 .time {
     text-align: left;
 }
+
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index:1;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-button {
+    float: right;
+    font-size: 1em;
+    color:#fff;
+}
+
+.modal-content {
+    width: 50%;
+    border-radius: 10px;
+    background-color:#ffffff;
+ 
+}

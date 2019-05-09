@@ -2,28 +2,7 @@
 
  // Timer related funcitons and variables 
 let secondPassed = 0;
-
-// MODAL 
-// instanciate new modal
-var modal = new tingle.modal({
-    footer: true,
-    stickyFooter: false,
-    closeMethods: ['overlay', 'button', 'escape'],
-    closeLabel: "Close",
-    cssClass: ['custom-class-1', 'custom-class-2'],
-    onOpen: function() {
-        console.log('modal open');
-    },
-    onClose: function() {
-        console.log('modal closed');
-    },
-    beforeClose: function() {
-        // here's goes some logic
-        // e.g. save content before closing the modal
-        return true; // close the modal
-        return false; // nothing happens
-    }
-});
+let score = 3;
 
 
 
@@ -145,9 +124,11 @@ function startGame(){
                         //}
                         if (moves > scoreTH[1]){ 
                             stars.getElementsByTagName('li')[1].getElementsByTagName('i')[0].className="fa fa-star-o";
+                            score = 2; 
                         }
                         if (moves > scoreTH[2]){ 
                             stars.getElementsByTagName('li')[2].getElementsByTagName('i')[0].className="fa fa-star-o";
+                            score = 1;
                         }
 
 
@@ -170,8 +151,11 @@ function startGame(){
                     symbol_prev = symbol;
 
                     if (open == 16){
-                        alert("You have completed!");
+                        //alert("You have completed!");
                         stopTimer();
+                        let trial = open;
+                        let time  = secondPassed; 
+                        openModal(score, time, trial);
                     }
 
             });
@@ -185,6 +169,18 @@ function startGame(){
    
  }
  
+function openModal(score, time, trial) {
+    let modal = document.querySelector('#endmodal');
+    let modalBody = document.querySelector('#modal-body');
+    console.log('modal Body: '+modalBody);
+    modalBody.textContent = 'game complete! :' + 'time: '  + time + ' score: ' + score + ' trial: ' + trial; 
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    let modal = document.querySelector('#endmodal');
+    modal.style.display = 'none';
+}
 
 
 
