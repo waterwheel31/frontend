@@ -13,6 +13,8 @@
  * writing app.js a little simpler to work with.
  */
 
+var gameClearClicked = false;
+
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -64,7 +66,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
+        // reset();
         lastTime = Date.now();
         main();
     }
@@ -107,8 +109,10 @@ var Engine = (function(global) {
 
         });
 
-        if (player.y < -50){
+        if (player.y < -50 && gameClearClicked==false){
             alert('Game Clear!');
+            gameClearClicked=true;
+            reset();
         }
 
     }
@@ -193,6 +197,20 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
+
+
+        console.log('reset!');
+        lastTime = Date.now();
+
+        allEnemies.forEach(function(enemy) {
+            enemy.reset();
+            console.log(enemy);
+            console.log('enemy x:' + enemy.x);
+        });
+
+        player.reset();
+
+        
         // noop
     }
 

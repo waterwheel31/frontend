@@ -7,6 +7,9 @@ var Enemy = function(x,y,speed) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 
+    this.initial_x = x;
+    this.initial_y = y;
+
     this.x = x;
     this.y = y; 
     this.startTime = 0;
@@ -29,6 +32,13 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Reset the position
+Enemy.prototype.reset = function() {
+    console.log('reset() to:'+this.initial_x);
+    this.x = this.initial_x;
+    this.y = this.initial_y;
+};
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -36,6 +46,10 @@ Enemy.prototype.render = function() {
 var Player = function(x,y){
 
     this.sprite = 'images/char-boy.png';
+
+    this.initial_x = x;
+    this.initial_y = y;
+
     this.x = x;
     this.y = y; 
     this.distance = 20;
@@ -70,6 +84,12 @@ Player.prototype.update = function(dt) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Reset the position
+Player.prototype.reset = function() {
+    this.x = this.initial_x;
+    this.y = this.initial_y;
 };
 
 // Now instantiate your objects.
